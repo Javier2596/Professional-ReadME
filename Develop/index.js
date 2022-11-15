@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+//const generateMarkdown = require('./Develop/utils/generateMarkdown.js');
 // TODO: Create an array of questions for user input
 const questions = [
 
@@ -9,33 +10,33 @@ inquirer
         {
             type: 'input',
             message: 'What is the title of your project?',
-            name: 'Project title',
+            name: 'title',
         },
         {
             type: 'input',
             message: 'Write a description of what your project is about.',
-            name: 'Description',
+            name: 'description',
             
         },
         {
             type: 'input',
             message: 'Write instructions for the installation process.',
-            name: 'Installation',
+            name: 'installation',
         },
         {
             type: 'input',
             message: 'Provide examples for how to use, and instructions for the usage of your project.',
-            name: 'Usage',
+            name: 'usage',
         },
         {
             type: 'input',
             message: 'Provide infomration on how others can contribute to your project.',
-            name: 'Contrbution',
+            name: 'contrbution',
         },
         {
             type: 'input',
-            message: 'Provide instructions on how to test this oproject .',
-            name: 'test instructions',
+            message: 'Provide instructions on how to test this project.',
+            name: 'test',
         },
         {
             type: 'confirm,',
@@ -48,12 +49,18 @@ inquirer
 ];
 
 // TODO: Create a function to write README file
- function writeToFile(fileName, data) {
-     
- }
+  function writeToFile(fileName, data) {
+     const filename = `${data.name.toLowercase().split(' ').join('')}.json`;
+
+      fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) => err ? console.log(err) : console.log('Successful')
+      );
+  };
+  writeToFile(README.md, questions);
 
 // TODO: Create a function to initialize app
- function init() {}
+ function init() {
+    
+ }
 
 // Function call to initialize app
  init();
