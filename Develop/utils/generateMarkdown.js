@@ -19,7 +19,7 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  let licenseLink = license.license;
+  let licenseLink = license.licenseLink;
   let myLink = '';
   
   if(licenseLink === 'GPLv3') {
@@ -47,8 +47,9 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# Title ${data.title} \n ## Description ${data.description} \n ## Installation ${data.installation} \n ## Usage ${data.usage} \n ## Contributions ${data.contribution} \n ## Testing ${data.test} \n ## ${renderLicenseSection(license)}
+  return `# Title ${data.title} \n ## ${renderLicenseBadge()} \n ## Description ${data.description} \n ## Installation ${data.installation} \n ## Usage ${data.usage} \n ## Contributions ${data.contribution} \n ## Testing ${data.test} \n ## ${renderLicenseSection(license)} ${renderLicenseLink()}
 `;
 }
+
 
 module.exports = generateMarkdown;
